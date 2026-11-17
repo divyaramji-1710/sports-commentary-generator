@@ -1,0 +1,22 @@
+{
+  "base_model": "distilgpt2",
+  "seed": 17,
+  "requested_epochs": 6,
+  "completed_steps": 20,
+  "learning_rate": 0.001,
+  "trainable_parameters": 147456,
+  "train_examples": 360,
+  "validation_examples": 60,
+  "best_step": 20,
+  "best_validation_loss": 1.2116442266656962,
+  "history": [
+    {
+      "step": 0,
+      "validation_loss": 3.149978305958428
+    },
+    {
+      "step": 20,
+      "validation_loss": 1.2116442266656962
+    }
+  ]
+}
