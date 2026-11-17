@@ -14,7 +14,7 @@ This project provides game developers with a powerful tool to generate dynamic a
 
 Tick these off as you go, and commit after each one.
 
-- [ ] **1. Create a small dataset of simulated sports events and commentary pairs.**  
+- [x] **1. Create a small dataset of simulated sports events and commentary pairs.**  
       Hint: Prepare your data to be used with the `lfllm-lflora` technique.
 - [ ] **2. Implement LoRA adapter injection and training on a pre-trained LLM (e.g., GPT-2).**  
       Hint: Use the `lfllm-lflora` technique to inject and train your LoRA adapter.
@@ -50,3 +50,19 @@ reaches GitHub, treat it as leaked and make a new one.
 - Expand the dataset with more diverse event types or commentary styles to enhance model versatility.
 - Add options to the Streamlit interface for controlling commentary length, tone, or specific player mentions.
 - Implement a simple feedback mechanism in the Streamlit app to collect user ratings on generated commentary.
+
+## Dataset
+
+The dataset contains 480 synthetic football event/commentary pairs:
+360 training, 60 validation, and 60 test examples.
+
+Event types: goal, save, and full-time.
+Team names are fictional. Commentary is generated from authored
+templates; no real match reports are used.
+
+Generation is reproducible using seed 17 in app/data.py.
+Event descriptions do not overlap across splits, but teams and
+commentary templates are shared. Evaluation therefore measures
+performance on new combinations within this controlled format.
+
+The test split is reserved for final evaluation.

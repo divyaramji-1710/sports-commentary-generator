@@ -1,35 +1,69 @@
-"""Your tests. Each milestone in README.md gets one here: write the test first, then make it pass.
+"""Tests for the project milestones."""
+import json
 
-They start skipped. Remove the `skip` line as you work on each milestone.
-"""
 import pytest
 
-# Milestone 1: Create a small dataset of simulated sports events and commentary pairs.
-@pytest.mark.skip(reason="remove this line when you start milestone 1")
-def test_milestone_1():
-    raise NotImplementedError("write the test for milestone 1")
+from app.core import milestone_1
 
 
-# Milestone 2: Implement LoRA adapter injection and training on a pre-trained LLM (e.g., GPT-2).
-@pytest.mark.skip(reason="remove this line when you start milestone 2")
+def test_milestone_1(tmp_path):
+    splits = milestone_1(tmp_path / "first")
+    repeated = milestone_1(tmp_path / "second")
+
+    assert splits == repeated
+    assert {name: len(rows) for name, rows in splits.items()} == {
+        "train": 360,
+        "validation": 60,
+        "test": 60,
+    }
+
+    events = {
+        name: {row["event"] for row in rows}
+        for name, rows in splits.items()
+    }
+    assert events["train"].isdisjoint(events["validation"])
+    assert events["train"].isdisjoint(events["test"])
+    assert events["validation"].isdisjoint(events["test"])
+
+    for name, rows in splits.items():
+        path = tmp_path / "first" / f"{name}.jsonl"
+        loaded = [
+            json.loads(line)
+            for line in path.read_text(encoding="utf-8").splitlines()
+        ]
+        assert loaded == rows
+
+        for row in rows:
+            score = f"{row['home_score']}-{row['away_score']}"
+            assert score in row["event"]
+            assert score in row["commentary"]
+            assert row["home"] in row["commentary"]
+            assert row["away"] in row["commentary"]
+
+            if row["event_type"] == "goal":
+                assert row["team"] in row["commentary"]
+                scoring_side = (
+                    "home_score" if row["team"] == row["home"]
+                    else "away_score"
+                )
+                assert row[scoring_side] > 0
+
+
+@pytest.mark.skip(reason="start milestone 2")
 def test_milestone_2():
-    raise NotImplementedError("write the test for milestone 2")
+    raise NotImplementedError
 
 
-# Milestone 3: Build a Streamlit interface to input event descriptions and generate commentary.
-@pytest.mark.skip(reason="remove this line when you start milestone 3")
+@pytest.mark.skip(reason="start milestone 3")
 def test_milestone_3():
-    raise NotImplementedError("write the test for milestone 3")
+    raise NotImplementedError
 
 
-# Milestone 4: Test the model's ability to produce relevant and engaging commentary.
-@pytest.mark.skip(reason="remove this line when you start milestone 4")
+@pytest.mark.skip(reason="start milestone 4")
 def test_milestone_4():
-    raise NotImplementedError("write the test for milestone 4")
+    raise NotImplementedError
 
 
-# Milestone 5: Implement adapter merging for inference.
-@pytest.mark.skip(reason="remove this line when you start milestone 5")
+@pytest.mark.skip(reason="start milestone 5")
 def test_milestone_5():
-    raise NotImplementedError("write the test for milestone 5")
-
+    raise NotImplementedError

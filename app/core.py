@@ -2,8 +2,9 @@
 
 # --- Milestone 1: Create a small dataset of simulated sports events and commentary pairs.
 # Hint: Prepare your data to be used with the `lfllm-lflora` technique.
-def milestone_1():  # TODO(milestone 1)
-    raise NotImplementedError("TODO(milestone 1)")
+def milestone_1(output_dir="data", seed=17, per_type=160):
+    from app.data import make_dataset
+    return make_dataset(output_dir, seed, per_type)
 
 
 # --- Milestone 2: Implement LoRA adapter injection and training on a pre-trained LLM (e.g., GPT-2).
