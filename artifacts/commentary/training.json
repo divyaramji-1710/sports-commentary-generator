@@ -1,0 +1,42 @@
+{
+  "base_model": "distilgpt2",
+  "seed": 17,
+  "requested_epochs": 6,
+  "completed_steps": 270,
+  "learning_rate": 0.001,
+  "trainable_parameters": 147456,
+  "train_examples": 360,
+  "validation_examples": 60,
+  "best_step": 270,
+  "best_validation_loss": 0.09756416650910826,
+  "history": [
+    {
+      "step": 0,
+      "validation_loss": 3.149978305958428
+    },
+    {
+      "step": 45,
+      "validation_loss": 0.5134856991305445
+    },
+    {
+      "step": 90,
+      "validation_loss": 0.2315823899259689
+    },
+    {
+      "step": 135,
+      "validation_loss": 0.13694880449328828
+    },
+    {
+      "step": 180,
+      "validation_loss": 0.13617393891916596
+    },
+    {
+      "step": 225,
+      "validation_loss": 0.11773751226970959
+    },
+    {
+      "step": 270,
+      "validation_loss": 0.09756416650910826
+    }
+  ]
+}

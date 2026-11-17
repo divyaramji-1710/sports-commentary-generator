@@ -9,8 +9,9 @@ def milestone_1(output_dir="data", seed=17, per_type=160):
 
 # --- Milestone 2: Implement LoRA adapter injection and training on a pre-trained LLM (e.g., GPT-2).
 # Hint: Use the `lfllm-lflora` technique to inject and train your LoRA adapter.
-def milestone_2():  # TODO(milestone 2)
-    raise NotImplementedError("TODO(milestone 2)")
+def milestone_2(**kwargs):
+    from app.training import train_adapter
+    return train_adapter(**kwargs)
 
 
 # --- Milestone 3: Build a Streamlit interface to input event descriptions and generate commentary.

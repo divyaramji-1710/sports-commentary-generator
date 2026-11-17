@@ -16,7 +16,7 @@ Tick these off as you go, and commit after each one.
 
 - [x] **1. Create a small dataset of simulated sports events and commentary pairs.**  
       Hint: Prepare your data to be used with the `lfllm-lflora` technique.
-- [ ] **2. Implement LoRA adapter injection and training on a pre-trained LLM (e.g., GPT-2).**  
+- [x] **2. Implement LoRA adapter injection and training on a pre-trained LLM (e.g., GPT-2).**  
       Hint: Use the `lfllm-lflora` technique to inject and train your LoRA adapter.
 - [ ] **3. Build a Streamlit interface to input event descriptions and generate commentary.**  
       Hint: Utilize your `trained LoRA adapter` for inference within the Streamlit app.
@@ -66,3 +66,23 @@ commentary templates are shared. Evaluation therefore measures
 performance on new combinations within this controlled format.
 
 The test split is reserved for final evaluation.
+
+## LoRA training results
+
+The frozen distilgpt2 base was adapted by training 147,456 LoRA
+parameters on 360 synthetic event/commentary pairs for six epochs
+(270 steps).
+
+Response-only validation loss on 60 examples fell from 3.1500
+to 0.0976. The best adapter was saved at step 270.
+
+Example validation output:
+
+Event: Football. Minute 89. Goal for Eagles.
+Score after goal: Eagles 3-3 United.
+
+Generated: Eagles score! That makes it Eagles 3-3 United.
+
+Initial inspection of one goal, save, and full-time example found
+that all three preserved the event type, teams, and score.
+This is a small qualitative check; full evaluation follows later.
