@@ -10,6 +10,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from app.inference import CommentaryGenerator
+from app.merging import merge_model
 
 
 st.set_page_config(
@@ -31,7 +32,9 @@ st.caption(
 @st.cache_resource
 def load_generator():
     checkpoint = PROJECT_ROOT / "artifacts/commentary/adapter.pt"
-    return CommentaryGenerator(checkpoint)
+    generator = CommentaryGenerator(checkpoint)
+    merge_model(generator.model)
+    return generator
 
 
 examples = {

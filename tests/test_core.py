@@ -107,9 +107,37 @@ def test_milestone_2():
         )
 
 
-@pytest.mark.skip(reason="start milestone 3")
-def test_milestone_3():
-    raise NotImplementedError
+def test_milestone_3(monkeypatch):
+    from app.core import milestone_3
+
+    calls = {}
+
+    class FakeGenerator:
+        def __init__(self, checkpoint):
+            calls["checkpoint"] = checkpoint
+
+        def generate(self, event, max_new_tokens):
+            calls["event"] = event
+            calls["max_new_tokens"] = max_new_tokens
+            return "City score! That makes it City 2-1 Rovers."
+
+    monkeypatch.setattr(
+        "app.inference.CommentaryGenerator",
+        FakeGenerator,
+    )
+
+    result = milestone_3(
+        "Goal for City.",
+        checkpoint="example.pt",
+        max_new_tokens=32,
+    )
+
+    assert result == "City score! That makes it City 2-1 Rovers."
+    assert calls == {
+        "checkpoint": "example.pt",
+        "event": "Goal for City.",
+        "max_new_tokens": 32,
+    }
 
 
 def test_milestone_4():
@@ -147,9 +175,44 @@ def test_milestone_4():
     assert not extra_score["score_correct"]
 
 
-@pytest.mark.skip(reason="start milestone 5")
 def test_milestone_5():
-    raise NotImplementedError
+    import torch
+    from torch import nn
+
+    from app.lora import LoRALinear
+    from app.merging import merge_model
+
+    torch.manual_seed(17)
+    adapter = LoRALinear(
+        nn.Linear(8, 8),
+        r=2,
+        alpha=4,
+        dropout=0.05,
+    )
+    with torch.no_grad():
+        adapter.B.normal_(mean=0, std=0.1)
+
+    model = nn.Sequential(adapter, nn.ReLU())
+    model.eval()
+    inputs = torch.randn(3, 8)
+
+    with torch.no_grad():
+        expected = model(inputs).clone()
+
+    merge_model(model)
+    assert not any(
+        isinstance(module, LoRALinear)
+        for module in model.modules()
+    )
+    torch.testing.assert_close(
+        model(inputs), expected, rtol=1e-5, atol=1e-6
+    )
+
+    # Repeating merge_model must not add the update again.
+    merge_model(model)
+    torch.testing.assert_close(
+        model(inputs), expected, rtol=1e-5, atol=1e-6
+    )
 
 def test_response_only_encoding():
     from app.encoding import encode_pair, format_prompt

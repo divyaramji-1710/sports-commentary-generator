@@ -1,0 +1,33 @@
+{
+  "checkpoint": "artifacts/commentary/adapter.pt",
+  "wrappers_before": 6,
+  "wrappers_after": 0,
+  "all_text_matches": true,
+  "all_logits_close": true,
+  "examples": [
+    {
+      "event": "Football. Minute 89. Goal for Eagles. Score after goal: Eagles 3-3 United.",
+      "before": "Eagles score! That makes it Eagles 3-3 United.",
+      "after": "Eagles score! That makes it Eagles 3-3 United.",
+      "same_text": true,
+      "max_logit_difference": 0.00018310546875,
+      "logits_close": true
+    },
+    {
+      "event": "Football. Minute 11. Save by Wolves. Score unchanged: Wolves 4-1 Eagles.",
+      "before": "Saved by Wolves! Still Wolves 4-1 Eagles.",
+      "after": "Saved by Wolves! Still Wolves 4-1 Eagles.",
+      "same_text": true,
+      "max_logit_difference": 9.918212890625e-05,
+      "logits_close": true
+    },
+    {
+      "event": "Football. Full-time. Final score: Wolves 2-3 Eagles.",
+      "before": "The match is over! Wolves 2-3 Eagles.",
+      "after": "The match is over! Wolves 2-3 Eagles.",
+      "same_text": true,
+      "max_logit_difference": 0.00020599365234375,
+      "logits_close": true
+    }
+  ]
+}

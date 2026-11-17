@@ -38,5 +38,6 @@ def milestone_4(**kwargs):
 
 # --- Milestone 5: Implement adapter merging for inference.
 # Hint: Apply `adapter merging` to optimize the model for deployment.
-def milestone_5():  # TODO(milestone 5)
-    raise NotImplementedError("TODO(milestone 5)")
+def milestone_5(**kwargs):
+    from app.merging import verify_merge
+    return verify_merge(**kwargs)
