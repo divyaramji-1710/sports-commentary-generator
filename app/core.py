@@ -16,8 +16,17 @@ def milestone_2(**kwargs):
 
 # --- Milestone 3: Build a Streamlit interface to input event descriptions and generate commentary.
 # Hint: Utilize your `trained LoRA adapter` for inference within the Streamlit app.
-def milestone_3():  # TODO(milestone 3)
-    raise NotImplementedError("TODO(milestone 3)")
+def milestone_3(
+    event,
+    checkpoint="artifacts/commentary/adapter.pt",
+    max_new_tokens=48,
+):
+    from app.inference import CommentaryGenerator
+
+    return CommentaryGenerator(checkpoint).generate(
+        event,
+        max_new_tokens=max_new_tokens,
+    )
 
 
 # --- Milestone 4: Test the model's ability to produce relevant and engaging commentary.
