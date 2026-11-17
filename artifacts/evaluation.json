@@ -1,0 +1,1162 @@
+{
+  "checkpoint": "artifacts/commentary/adapter.pt",
+  "test_examples": 60,
+  "decoding": "greedy, max_new_tokens=48",
+  "limitations": "Rule-based checks with shared training/test templates. Not a general fluency or creativity assessment.",
+  "summary": {
+    "base": {
+      "score_correct": 0.0,
+      "event_and_actor_correct": 0.0,
+      "both_correct": 0.0,
+      "matches_valid_template": 0.0
+    },
+    "adapted": {
+      "score_correct": 1.0,
+      "event_and_actor_correct": 1.0,
+      "both_correct": 1.0,
+      "matches_valid_template": 1.0
+    }
+  },
+  "examples": [
+    {
+      "event": "Football. Minute 10. Goal for Falcons. Score after goal: Wolves 4-1 Falcons.",
+      "reference": "It's a goal for Falcons! Wolves 4-1 Falcons.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Falcons! The score is now Wolves 4-1 Falcons.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 48. Goal for Rovers. Score after goal: City 4-4 Rovers.",
+      "reference": "Rovers score! That makes it City 4-4 Rovers.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Rovers! The score is now City 4-4 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 44. Goal for Rovers. Score after goal: United 0-3 Rovers.",
+      "reference": "Goal for Rovers! The score is now United 0-3 Rovers.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Rovers! The score is now United 0-3 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Rovers 3-2 Eagles.",
+      "reference": "Full-time! The final score is Rovers 3-2 Eagles.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Rovers 3-2 Eagles.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 66. Save by United. Score unchanged: United 2-4 Wolves.",
+      "reference": "United make the save! It remains United 2-4 Wolves.",
+      "event_type": "save",
+      "adapted_output": "United make the save! It remains United 2-4 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The first half of the season was a bit of a shock, but the result was a lot of fun. The first half was a bit of a shock, but the result was a lot of fun. The first half was a bit of",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 27. Goal for Rovers. Score after goal: United 4-1 Rovers.",
+      "reference": "Goal for Rovers! The score is now United 4-1 Rovers.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Rovers! The score is now United 4-1 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Eagles 3-3 Falcons.",
+      "reference": "Full-time! The final score is Eagles 3-3 Falcons.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Eagles 3-3 Falcons.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Eagles are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 30. Goal for Wolves. Score after goal: United 1-4 Wolves.",
+      "reference": "Wolves score! That makes it United 1-4 Wolves.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Wolves! The score is now United 1-4 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Wolves have been in the top 10 in the Premier League this season, and they are in the top 10 in the Premier League.\nThe Wolves have been in the top 10 in the Premier League this season, and they are in",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Eagles 0-1 Falcons.",
+      "reference": "That's full-time: Eagles 0-1 Falcons.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Eagles 0-1 Falcons.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Wolves 4-4 Falcons.",
+      "reference": "The match is over! Wolves 4-4 Falcons.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Wolves 4-4 Falcons.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 15. Goal for Falcons. Score after goal: Wolves 0-3 Falcons.",
+      "reference": "Goal for Falcons! The score is now Wolves 0-3 Falcons.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Falcons! The score is now Wolves 0-3 Falcons.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Eagles 3-1 Rovers.",
+      "reference": "That's full-time: Eagles 3-1 Rovers.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Eagles 3-1 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "I'm not sure if I'm going to be able to play in the final game of the season, but I'm sure I'll be able to play in the final game of the season.\nI'm sure I'll be",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 21. Save by Wolves. Score unchanged: Rovers 2-1 Wolves.",
+      "reference": "Saved by Wolves! Still Rovers 2-1 Wolves.",
+      "event_type": "save",
+      "adapted_output": "Saved by Wolves! Still Rovers 2-1 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The game was a bit of a surprise to me, but I was able to see the difference between the two teams. The first was the first time I saw the game in the first place. The second was the first time I saw",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: United 4-2 Wolves.",
+      "reference": "Full-time! The final score is United 4-2 Wolves.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! United 4-2 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The first game of the season was a 2-1 draw with the Wolves. The Wolves were able to score a goal and a penalty in the first half. The Wolves were able to score a goal and a penalty in the second half",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 56. Save by Falcons. Score unchanged: Falcons 1-1 Wolves.",
+      "reference": "A save by Falcons! The score stays Falcons 1-1 Wolves.",
+      "event_type": "save",
+      "adapted_output": "Falcons make the save! It remains Falcons 1-1 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 10. Goal for Rovers. Score after goal: United 1-3 Rovers.",
+      "reference": "It's a goal for Rovers! United 1-3 Rovers.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Rovers! The score is now United 1-3 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 30. Save by City. Score unchanged: Eagles 1-0 City.",
+      "reference": "A save by City! The score stays Eagles 1-0 City.",
+      "event_type": "save",
+      "adapted_output": "City make the save! It remains Eagles 1-0 City.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Eagles are a team that has been in the midst of a difficult season. They have been a team that has been in the midst of a difficult season. They have been a team that has been in the midst of a difficult season",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 7. Save by Wolves. Score unchanged: Eagles 1-3 Wolves.",
+      "reference": "A save by Wolves! The score stays Eagles 1-3 Wolves.",
+      "event_type": "save",
+      "adapted_output": "Saved by Wolves! Still Eagles 1-3 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Wolves have been a very good team in the Premier League this season, and they have been a very good team in the Premier League this season. They have been a very good team in the Premier League this season, and they have been",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Eagles 2-1 United.",
+      "reference": "The match is over! Eagles 2-1 United.",
+      "event_type": "full-time",
+      "adapted_output": "Full-time! The final score is Eagles 2-1 United.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 49. Goal for Falcons. Score after goal: Falcons 4-1 United.",
+      "reference": "It's a goal for Falcons! Falcons 4-1 United.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Falcons! The score is now Falcons 4-1 United.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 73. Save by Wolves. Score unchanged: City 0-3 Wolves.",
+      "reference": "Saved by Wolves! Still City 0-3 Wolves.",
+      "event_type": "save",
+      "adapted_output": "Saved by Wolves! Still City 0-3 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Wolves have been in the top 10 in the Premier League this season, and they have been in the top 10 in the Premier League this season.\nThe Wolves have been in the top 10 in the Premier League this season, and they",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 38. Goal for City. Score after goal: City 1-0 Rovers.",
+      "reference": "City score! That makes it City 1-0 Rovers.",
+      "event_type": "goal",
+      "adapted_output": "City score! That makes it City 1-0 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Rovers 3-1 Falcons.",
+      "reference": "That's full-time: Rovers 3-1 Falcons.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Rovers 3-1 Falcons.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 32. Save by Eagles. Score unchanged: Eagles 1-0 Falcons.",
+      "reference": "Saved by Eagles! Still Eagles 1-0 Falcons.",
+      "event_type": "save",
+      "adapted_output": "Eagles make the save! It remains Eagles 1-0 Falcons.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Eagles are a team that has been in the midst of a difficult season. The Eagles have been a team that has been in the midst of a difficult season. The Eagles have been a team that has been in the midst of a",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 7. Goal for Rovers. Score after goal: Falcons 0-2 Rovers.",
+      "reference": "It's a goal for Rovers! Falcons 0-2 Rovers.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Rovers! The score is now Falcons 0-2 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 30. Save by Rovers. Score unchanged: Eagles 4-1 Rovers.",
+      "reference": "Saved by Rovers! Still Eagles 4-1 Rovers.",
+      "event_type": "save",
+      "adapted_output": "Rovers make the save! It remains Eagles 4-1 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 21. Goal for City. Score after goal: Wolves 2-1 City.",
+      "reference": "It's a goal for City! Wolves 2-1 City.",
+      "event_type": "goal",
+      "adapted_output": "City score! That makes it Wolves 2-1 City.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Wolves have been in the top 10 in the Premier League this season, and they have been in the top 10 in the Premier League this season.\nThe Wolves have been in the top 10 in the Premier League this season, and",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 34. Goal for United. Score after goal: Falcons 3-1 United.",
+      "reference": "It's a goal for United! Falcons 3-1 United.",
+      "event_type": "goal",
+      "adapted_output": "United score! That makes it Falcons 3-1 United.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "\"I'm not sure what the heck I'm talking about, but I'm sure I'm going to be able to do it.\"\n\"I'm not sure what the heck I'm talking about, but I'm sure I'm",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: United 2-3 Wolves.",
+      "reference": "That's full-time: United 2-3 Wolves.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! United 2-3 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Wolves have been in the top 10 in the Premier League for the last two seasons, and they have won the Premier League in the last two seasons.\nThe Wolves have won the Premier League in the last two seasons, and they",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 88. Goal for Falcons. Score after goal: Falcons 3-2 Wolves.",
+      "reference": "Goal for Falcons! The score is now Falcons 3-2 Wolves.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Falcons! The score is now Falcons 3-2 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: United 0-4 Falcons.",
+      "reference": "Full-time! The final score is United 0-4 Falcons.",
+      "event_type": "full-time",
+      "adapted_output": "Full-time! The final score is United 0-4 Falcons.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: United 3-2 Rovers.",
+      "reference": "That's full-time: United 3-2 Rovers.",
+      "event_type": "full-time",
+      "adapted_output": "Full-time! The final score is United 3-2 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 8. Save by United. Score unchanged: Falcons 3-2 United.",
+      "reference": "A save by United! The score stays Falcons 3-2 United.",
+      "event_type": "save",
+      "adapted_output": "A save by United! The score stays Falcons 3-2 United.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the midst of a difficult season. The Falcons have been a team that has been in the midst of a difficult season. The Falcons have been a team that has been in the midst of a",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 63. Save by Eagles. Score unchanged: Eagles 3-0 City.",
+      "reference": "Eagles make the save! It remains Eagles 3-0 City.",
+      "event_type": "save",
+      "adapted_output": "Eagles make the save! It remains Eagles 3-0 City.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Eagles are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 63. Goal for Rovers. Score after goal: Rovers 2-0 United.",
+      "reference": "It's a goal for Rovers! Rovers 2-0 United.",
+      "event_type": "goal",
+      "adapted_output": "Rovers score! That makes it Rovers 2-0 United.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 29. Save by United. Score unchanged: Wolves 0-2 United.",
+      "reference": "Saved by United! Still Wolves 0-2 United.",
+      "event_type": "save",
+      "adapted_output": "A save by United! The score stays Wolves 0-2 United.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The first half of the season was a bit of a shock, but the first half was a bit of a shock, but the first half was a bit of a shock, but the first half was a bit of a shock, but",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 76. Save by Rovers. Score unchanged: United 4-0 Rovers.",
+      "reference": "A save by Rovers! The score stays United 4-0 Rovers.",
+      "event_type": "save",
+      "adapted_output": "Rovers make the save! It remains United 4-0 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 28. Goal for Rovers. Score after goal: Rovers 1-0 United.",
+      "reference": "It's a goal for Rovers! Rovers 1-0 United.",
+      "event_type": "goal",
+      "adapted_output": "Rovers score! That makes it Rovers 1-0 United.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Rovers 3-2 City.",
+      "reference": "The match is over! Rovers 3-2 City.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Rovers 3-2 City.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Wolves 0-3 Rovers.",
+      "reference": "That's full-time: Wolves 0-3 Rovers.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Wolves 0-3 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Falcons 4-3 Rovers.",
+      "reference": "Full-time! The final score is Falcons 4-3 Rovers.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Falcons 4-3 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "I'm not sure if I'm going to be able to play in the NFL. I'm not sure if I'm going to be able to play in the NFL. I'm not sure if I'm going to be able to",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 80. Goal for Falcons. Score after goal: Falcons 1-0 Eagles.",
+      "reference": "Falcons score! That makes it Falcons 1-0 Eagles.",
+      "event_type": "goal",
+      "adapted_output": "Goal for Falcons! The score is now Falcons 1-0 Eagles.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Falcons 4-0 City.",
+      "reference": "Full-time! The final score is Falcons 4-0 City.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Falcons 4-0 City.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 12. Save by Falcons. Score unchanged: Falcons 1-3 City.",
+      "reference": "Falcons make the save! It remains Falcons 1-3 City.",
+      "event_type": "save",
+      "adapted_output": "Falcons make the save! It remains Falcons 1-3 City.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 79. Save by Falcons. Score unchanged: Falcons 0-3 Eagles.",
+      "reference": "Saved by Falcons! Still Falcons 0-3 Eagles.",
+      "event_type": "save",
+      "adapted_output": "Falcons make the save! It remains Falcons 0-3 Eagles.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 23. Save by City. Score unchanged: City 1-2 Rovers.",
+      "reference": "A save by City! The score stays City 1-2 Rovers.",
+      "event_type": "save",
+      "adapted_output": "City make the save! It remains City 1-2 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The game was played at the end of the second half. The goal was scored by the goalkeeper.\nThe goal was scored by the goalkeeper.\nThe goal was scored by the goalkeeper.\nThe goal was scored by the goalkeeper.",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Eagles 1-4 Wolves.",
+      "reference": "That's full-time: Eagles 1-4 Wolves.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Eagles 1-4 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Eagles are a team that has been in the midst of a difficult season for the Eagles. The Eagles have been a team that has been in the midst of a difficult season for the Eagles. The Eagles have been a team that has",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 46. Save by Falcons. Score unchanged: Falcons 2-3 Rovers.",
+      "reference": "A save by Falcons! The score stays Falcons 2-3 Rovers.",
+      "event_type": "save",
+      "adapted_output": "Falcons make the save! It remains Falcons 2-3 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "I'm not sure if the Falcons will be able to beat the Falcons in the NFC East. I'm sure they'll be able to beat the Falcons in the NFC East. I'm sure they'll be able to beat the Falcons in",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 37. Save by Wolves. Score unchanged: Rovers 1-0 Wolves.",
+      "reference": "Saved by Wolves! Still Rovers 1-0 Wolves.",
+      "event_type": "save",
+      "adapted_output": "Saved by Wolves! Still Rovers 1-0 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 79. Goal for Eagles. Score after goal: Eagles 1-1 United.",
+      "reference": "Goal for Eagles! The score is now Eagles 1-1 United.",
+      "event_type": "goal",
+      "adapted_output": "Eagles score! That makes it Eagles 1-1 United.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "\"I'm not sure what the Eagles are going to do with the ball, but I think they're going to do something about it. I think they're going to do something about it. I think they're going to do something",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 64. Goal for Rovers. Score after goal: Rovers 1-0 Falcons.",
+      "reference": "Rovers score! That makes it Rovers 1-0 Falcons.",
+      "event_type": "goal",
+      "adapted_output": "Rovers score! That makes it Rovers 1-0 Falcons.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Eagles 2-2 City.",
+      "reference": "Full-time! The final score is Eagles 2-2 City.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Eagles 2-2 City.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Eagles are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: United 1-3 Wolves.",
+      "reference": "That's full-time: United 1-3 Wolves.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! United 1-3 Wolves.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Wolves have been in the top 10 in the Premier League for the last two seasons, and they have won the Premier League in the last two seasons.\nThe Wolves have won the Premier League in the last two seasons, and they",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 7. Save by Falcons. Score unchanged: Falcons 0-2 Eagles.",
+      "reference": "A save by Falcons! The score stays Falcons 0-2 Eagles.",
+      "event_type": "save",
+      "adapted_output": "Falcons make the save! It remains Falcons 0-2 Eagles.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 41. Goal for City. Score after goal: City 1-3 Rovers.",
+      "reference": "City score! That makes it City 1-3 Rovers.",
+      "event_type": "goal",
+      "adapted_output": "City score! That makes it City 1-3 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Falcons 3-3 Eagles.",
+      "reference": "Full-time! The final score is Falcons 3-3 Eagles.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Falcons 3-3 Eagles.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Full-time. Final score: Wolves 2-3 Falcons.",
+      "reference": "That's full-time: Wolves 2-3 Falcons.",
+      "event_type": "full-time",
+      "adapted_output": "The match is over! Wolves 2-3 Falcons.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "The Falcons are a team that has been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long time. They have been in the playoffs for a long",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 89. Save by United. Score unchanged: Eagles 1-0 United.",
+      "reference": "United make the save! It remains Eagles 1-0 United.",
+      "event_type": "save",
+      "adapted_output": "A save by United! The score stays Eagles 1-0 United.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 28. Goal for United. Score after goal: City 2-1 United.",
+      "reference": "Goal for United! The score is now City 2-1 United.",
+      "event_type": "goal",
+      "adapted_output": "United score! That makes it City 2-1 United.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    },
+    {
+      "event": "Football. Minute 47. Save by Rovers. Score unchanged: City 4-2 Rovers.",
+      "reference": "Saved by Rovers! Still City 4-2 Rovers.",
+      "event_type": "save",
+      "adapted_output": "Rovers make the save! It remains City 4-2 Rovers.",
+      "adapted_checks": {
+        "score_correct": true,
+        "event_and_actor_correct": true,
+        "both_correct": true,
+        "matches_valid_template": true
+      },
+      "base_output": "",
+      "base_checks": {
+        "score_correct": false,
+        "event_and_actor_correct": false,
+        "both_correct": false,
+        "matches_valid_template": false
+      }
+    }
+  ]
+}

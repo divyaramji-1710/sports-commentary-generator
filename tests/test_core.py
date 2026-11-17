@@ -112,9 +112,39 @@ def test_milestone_3():
     raise NotImplementedError
 
 
-@pytest.mark.skip(reason="start milestone 4")
 def test_milestone_4():
-    raise NotImplementedError
+    from app.evaluation import check_commentary
+
+    row = {
+        "event_type": "goal",
+        "team": "City",
+        "home": "City",
+        "away": "Rovers",
+        "home_score": 2,
+        "away_score": 1,
+    }
+
+    correct = check_commentary(
+        row, "City score! That makes it City 2-1 Rovers."
+    )
+    assert correct["both_correct"]
+    assert correct["matches_valid_template"]
+
+    wrong_score = check_commentary(
+        row, "City score! That makes it City 1-2 Rovers."
+    )
+    assert not wrong_score["score_correct"]
+
+    wrong_actor = check_commentary(
+        row, "Rovers score! That makes it City 2-1 Rovers."
+    )
+    assert wrong_actor["score_correct"]
+    assert not wrong_actor["event_and_actor_correct"]
+
+    extra_score = check_commentary(
+        row, "City score! City 2-1 Rovers. Now it is 3-1."
+    )
+    assert not extra_score["score_correct"]
 
 
 @pytest.mark.skip(reason="start milestone 5")
